@@ -1,0 +1,41 @@
+.section-header {
+  position: relative;
+  padding: 20px;
+  margin: 20px -15px;
+  font-size: 14px;
+  border: 1px solid #434857;
+  border-radius: 6px 6px 0px 0px;
+
+  background-color: transparent;
+}
+
+.highlight {
+  border: 0;
+  background-color: #1a1c22;
+  padding: 40px;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+
+.door-names {
+  text-align: center;
+}
+
+.cancel-borders {
+  padding-right: 30px !important;
+  padding-left: 30px !important;
+
+}
+
+button {
+  padding: 1px 3px;
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+  outline: none;
+  display: block;
+  height: inherit;
+  width: inherit;
+  cursor: pointer;
+}

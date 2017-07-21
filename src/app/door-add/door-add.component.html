@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-header">
+          <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse"
+                  data-target="#nav-toggleable-md">
+            <span class="sr-only">Toggle nav</span>
+          </button>
+          <a class="sidebar-brand img-responsive" routerLink="/dashboard">
+            <span class="icon icon-home sidebar-brand-icon"></span>
+          </a>
+        </div>
+
+        <div class="collapse nav-toggleable-md" id="nav-toggleable-md">
+          <ul class="nav nav-pills nav-stacked flex-column">
+            <li class="nav-header">Directories</li>
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/doors">Doors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/users">Users</a>
+            </li>
+          </ul>
+          <hr class="visible-xs mt-3">
+        </div>
+      </nav>
+    </div>
+    <div class="col-md-9 content">
+      <div class="dashhead">
+        <div class="dashhead-titles">
+          <h6 class="dashhead-subtitle">Homeaut</h6>
+          <h2 class="dashhead-title">Add Door</h2>
+        </div>
+        <div class="btn-toolbar dashhead-toolbar">
+          <div>
+            <span class="important-text">Gigel</span>
+            <a routerLink="/login">
+              <button type="button" class="btn btn-sm btn-outline-danger">Sign out</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-3">
+      <div class="form-group has-success has-feedback">
+        <label class="control-label" for="name">Name: </label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="name">
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      </div>
+
+      <div class="form-group has-success has-feedback">
+        <label class="control-label" for="pinNr">Pin Number: </label>
+        <input type="text" class="form-control" id="pinNr" [(ngModel)]="pinNr">
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      </div>
+
+      <div style="float: left;">
+        <a routerLink="/doors">
+          <button type="button" class="btn btn-success" (click)="postRequest()">Create</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

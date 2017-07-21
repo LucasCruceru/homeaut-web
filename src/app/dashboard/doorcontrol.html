@@ -1,0 +1,115 @@
+<style>
+  .section-header {
+    position: relative;
+    padding: 20px;
+    margin: 20px -15px;
+    font-size: 14px;
+    border: 1px solid #434857;
+    border-radius: 6px 6px 0px 0px;
+
+    background-color: transparent;
+  }
+
+  .highlight {
+    border: 0;
+    background-color: #1a1c22;
+    padding: 40px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .door-names {
+    text-align: center;
+  }
+
+  .cancel-borders {
+    padding-right: 30px !important;
+    padding-left: 30px !important;
+
+  }
+
+  button {
+    padding: 1px 3px;
+    background: transparent;
+    border: none !important;
+    font-size: 0;
+    outline: none;
+    display: block;
+    height: inherit;
+    width: inherit;
+    cursor: pointer;
+  }
+
+</style>
+
+<div style="margin: 20px">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 cancel-borders">
+      <div class="section-header" style="margin-bottom: 0;">
+        <div class="list-group-header">
+          <h3 class="statcard-number">{{door.name}}</h3>
+          <span class="statcard-desc">Closed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="highlight" style="padding-right: 60px;
+                   padding-left: 60px;">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="padding-left: 0px; padding-right: 0px;">
+
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-left: 5px; padding-right: 0px;">
+            <button (click)="openDoor()">
+              <div class="statcard statcard-success p-4 mb-2">
+                <h3 class="statcard-number">Open</h3>
+              </div>
+            </button>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 " style="padding-left: 0px; padding-right: 5px;">
+            <button (click)="closeDoor()">
+              <div class="statcard statcard-danger p-4 mb-2">
+                <h3 class="statcard-number">Close</h3>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <ul class="list-group">
+          <li class="list-group-item" style="margin-bottom: 10px">
+            Progress
+            <span class="list-group-progress" style="width: 75%;"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="padding-left: 0px; padding-right: 0px;">
+        <button (click)="stopDoor()">
+          <div class="statcard statcard-danger p-4 mb-2">
+            <h3 class="statcard-number" style="text-align: center">Stop</h3>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+<!--<script src="assets/toolkit.min.js"></script>-->
+<!--<script src="assets/tether.min.js"></script>-->
+
+<!--<script>-->
+<!--// execute/clear BS loaders for docs-->
+<!--$(function () {-->
+<!--while (window.BS && window.BS.loader && window.BS.loader.length) {-->
+<!--(window.BS.loader.pop())()-->
+<!--}-->
+<!--}) </script>-->
+
+

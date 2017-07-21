@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-header">
+          <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse"
+                  data-target="#nav-toggleable-md">
+            <span class="sr-only">Toggle nav</span>
+          </button>
+          <a class="sidebar-brand img-responsive" routerLink="/dashboard">
+            <span class="icon icon-home sidebar-brand-icon"></span>
+          </a>
+        </div>
+
+        <div class="collapse nav-toggleable-md" id="nav-toggleable-md">
+          <ul class="nav nav-pills nav-stacked flex-column">
+            <li class="nav-header">Directories</li>
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/doors">Doors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/users">Users</a>
+            </li>
+          </ul>
+          <hr class="visible-xs mt-3">
+        </div>
+      </nav>
+    </div>
+    <div class="col-md-9 content">
+      <div class="dashhead">
+        <div class="dashhead-titles">
+          <h6 class="dashhead-subtitle">Homeaut</h6>
+          <h2 class="dashhead-title">Edit Door</h2>
+        </div>
+        <div class="btn-toolbar dashhead-toolbar">
+          <div>
+            <span class="important-text">Gigel</span>
+            <a routerLink="/login">
+              <button type="button" class="btn btn-sm btn-outline-danger">Sign out</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-3">
+      <div>
+        <label class="control-label" for="id">Door ID: </label>
+        <p><input class="form-control" id="id" type="number" placeholder="{{result.id}}" readonly=""></p>
+      </div>
+
+      <div>
+        <label class="control-label" for="name">Name: </label>
+        <p><input class="form-control" id="name" type="text" placeholder="{{result.name}}"></p>
+      </div>
+
+      <div>
+        <label class="control-label" for="pinNr">Pin Number: </label>
+        <p><input class="form-control" id="pinNr" type="number" placeholder="{{result.pinNr}}"></p>
+      </div>
+
+      <div style="float: left;">
+        <a routerLink="/door">
+          <button type="button" class="btn btn-success">Update</button>
+        </a>
+
+      </div>
+
+      <div style="float: right;">
+        <a routerLink="/door">
+          <button type="button" class="btn btn-danger" (click)="deleteRequest()">Delete</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
