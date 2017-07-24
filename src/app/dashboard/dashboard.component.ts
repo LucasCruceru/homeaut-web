@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
-import {DoorControlComponent} from './door-control.component';
-import { AppUrl } from '../app.component';
+import "rxjs/add/operator/map";
 
 export class Door {
 
@@ -24,11 +23,13 @@ const DOORS: Door[] = [
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  appURL = 'http://192.168.216.233:8080/dashboard';
 
-  // appURL = 'http://localhost:8080/dashboard';
 
+  // doors = DOORS;
 
-  doors = DOORS;
+  doors: any = [];
+
 
 
   ngOnInit(): void {
@@ -39,9 +40,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getDoorData() {
-    // this.http.get(this.appURL).subscribe(data => {
-    //   this.doors = data as any;
-    // })
+    this.http.get(this.appURL)
+      .map(response => response.json())
+      .subscribe(data => {
+        this.doors = data;
+      })
   }
 
 }
