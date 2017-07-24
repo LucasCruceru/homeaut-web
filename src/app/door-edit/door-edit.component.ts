@@ -11,8 +11,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class DoorEditComponent implements OnInit {
   id: number;
   name: string;
-  pinNr: number;
-  result: Door;
+  deviceComm: string;
+  resultD: Door;
+
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
@@ -25,14 +26,17 @@ export class DoorEditComponent implements OnInit {
   }
 
   getRequest() {
-    this.http.get(AppUrl.appURL + 'doors/' + this.id).subscribe(data => {this.result = data as any; });
+    this.http.get(AppUrl.appURL + 'doors/' + this.id).subscribe(data => {this.resultD = data as Door; });
   }
 
   deleteRequest() {
     this.http.delete(AppUrl.appURL + 'doors/' + this.id).subscribe();
   }
 
-  /*putRequest() {
-    this.http.put(this.appURL + 'doors/' + this.id, )
-  }*/
+  putRequest() {
+    this.resultD.id = this.id;
+    this.resultD.name = this.name;
+    this.resultD.deviceComm = this.deviceComm;
+    this.http.put(AppUrl.appURL + 'doors/' + this.id, this.resultD).subscribe();
+  }
 }

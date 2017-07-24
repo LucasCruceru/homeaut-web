@@ -10,9 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class UserEditComponent implements OnInit {
   id: number;
-  name: string;
+  username: string;
   password: string;
-  result: User;
+  resultU: User;
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
@@ -25,14 +25,17 @@ export class UserEditComponent implements OnInit {
   }
 
   getRequest() {
-    this.http.get(AppUrl.appURL + 'users/' + this.id).subscribe(data => {this.result = data as any; });
+    this.http.get(AppUrl.appURL + 'users/' + this.id).subscribe(data => {this.resultU = data as any; });
   }
 
   deleteRequest() {
     this.http.delete(AppUrl.appURL + 'users/' + this.id).subscribe();
   }
 
-  /*putRequest() {
-    this.http.put(AppUrl.appURL + 'users/')
-  }*/
+  putRequest() {
+    this.resultU.id = this.id;
+    this.resultU.username = this.username;
+    this.resultU.password = this.password;
+    this.http.put(AppUrl.appURL + 'users/' + this.id, this.resultU).subscribe();
+  }
 }

@@ -10,7 +10,7 @@ import { Door, AppUrl } from '../app.component';
 export class DoorAddComponent implements OnInit {
   id: number;
   name: string;
-  pinNr: number;
+  deviceComm: string;
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,6 @@ export class DoorAddComponent implements OnInit {
   }
 
   postRequest() {
-    this.http.post(AppUrl.appURL + 'doors/', new Door(this.id, this.name, this.pinNr)).subscribe();
+    this.http.post(AppUrl.appURL + 'doors/', new Door(this.id, this.name, this.deviceComm)).subscribe();
   }
 }

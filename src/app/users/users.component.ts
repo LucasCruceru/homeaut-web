@@ -19,7 +19,6 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.getAllRequest();
-
   }
 
   getAllRequest() {

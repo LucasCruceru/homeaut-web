@@ -3,11 +3,11 @@ import {Component, Injectable} from '@angular/core';
 export class Door {
   id: number;
   name: string;
-  pinNr: number;
-  constructor(id: number, name: string, pinNr: number) {
+  deviceComm: string;
+  constructor(id: number, name: string, deviceComm: string) {
     this.id = id;
     this.name = name;
-    this.pinNr = pinNr;
+    this.deviceComm = deviceComm;
   }
 }
 

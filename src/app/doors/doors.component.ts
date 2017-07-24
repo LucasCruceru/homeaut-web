@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Door, AppUrl } from '../app.component';
 
@@ -8,19 +8,19 @@ import { Door, AppUrl } from '../app.component';
   styleUrls: ['./doors.component.css']
 })
 export class DoorsComponent implements OnInit {
-
   results: Door[];
   id: number;
   name: string;
-  pinNr: number;
+  deviceComm: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
     this.getAllRequest();
   }
 
   getAllRequest() {
-    this.http.get(AppUrl.appURL + 'doors/getAll').subscribe(data => {this.results = data as any; });
+    this.http.get(AppUrl.appURL + 'doors/').subscribe(data => {this.results = data as any; });
   }
 }

@@ -42,21 +42,21 @@
       <hr class="mt-3">
       <div>
         <label class="control-label" for="id">Door ID: </label>
-        <p><input class="form-control" id="id" type="number" placeholder="{{result.id}}" readonly=""></p>
+        <p><input class="form-control" id="id" type="number" placeholder="{{resultD.id}}" readonly=""></p>
       </div>
 
       <div>
         <label class="control-label" for="name">Name: </label>
-        <p><input class="form-control" id="name" type="text" placeholder="{{result.name}}"></p>
+        <p><input class="form-control" id="name" type="text" placeholder="{{resultD.name}}" [(ngModel)]="name"></p>
       </div>
 
       <div>
-        <label class="control-label" for="pinNr">Pin Number: </label>
-        <p><input class="form-control" id="pinNr" type="number" placeholder="{{result.pinNr}}"></p>
+        <label class="control-label" for="deviceComm">Pin Number: </label>
+        <p><input class="form-control" id="deviceComm" type="text" placeholder="{{resultD.deviceComm}}" [(ngModel)]="deviceComm"></p>
       </div>
 
       <div style="float: left;">
-        <button type="button" class="btn btn-success" routerLink="/doors">Update</button>
+        <button type="button" class="btn btn-success" routerLink="/doors" (click)="putRequest()">Update</button>
       </div>
 
       <div style="float: right;">
