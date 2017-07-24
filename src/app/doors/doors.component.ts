@@ -21,6 +21,6 @@ export class DoorsComponent implements OnInit {
   }
 
   getAllRequest() {
-    this.http.get(AppUrl.appURL + 'doors/').subscribe(data => {this.results = data as any; });
+    this.http.get(AppUrl.appURL + 'api/doors/').subscribe(data => {this.results = data as any; });
   }
 }

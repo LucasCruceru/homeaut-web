@@ -18,6 +18,6 @@ export class DoorAddComponent implements OnInit {
   }
 
   postRequest() {
-    this.http.post(AppUrl.appURL + 'doors/', new Door(this.id, this.name, this.deviceComm)).subscribe();
+    this.http.post(AppUrl.appURL + 'api/doors/', new Door(this.id, this.name, this.deviceComm)).subscribe();
   }
 }

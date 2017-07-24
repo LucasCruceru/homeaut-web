@@ -26,17 +26,17 @@ export class DoorEditComponent implements OnInit {
   }
 
   getRequest() {
-    this.http.get(AppUrl.appURL + 'doors/' + this.id).subscribe(data => {this.resultD = data as Door; });
+    this.http.get(AppUrl.appURL + 'api/doors/' + this.id).subscribe(data => {this.resultD = data as Door; });
   }
 
   deleteRequest() {
-    this.http.delete(AppUrl.appURL + 'doors/' + this.id).subscribe();
+    this.http.delete(AppUrl.appURL + 'api/doors/' + this.id).subscribe();
   }
 
   putRequest() {
     this.resultD.id = this.id;
     this.resultD.name = this.name;
     this.resultD.deviceComm = this.deviceComm;
-    this.http.put(AppUrl.appURL + 'doors/' + this.id, this.resultD).subscribe();
+    this.http.put(AppUrl.appURL + 'api/doors/' + this.id, this.resultD).subscribe();
   }
 }
