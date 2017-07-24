@@ -57,7 +57,7 @@ export class DoorControlComponent {
   }
 
   showProgress(){
-    document.getElementsByClassName("list-group-progress")[0].setAttribute("style", "z-index:0; background-color: #f5f5f5; width: 0; width: " + this.statusPercent + "%");
+    document.getElementsByClassName("list-group-progress")[0].setAttribute("style", "width: 0; width: " + this.statusPercent + "%");
   }
 
 }
