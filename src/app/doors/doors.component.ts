@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Door } from '../app.component';
+import { Door, AppUrl } from '../app.component';
 
 @Component({
   selector: 'app-doors',
@@ -9,7 +9,6 @@ import { Door } from '../app.component';
 })
 export class DoorsComponent implements OnInit {
 
-  appURL = 'http://localhost:8080/';
   results: Door[];
   id: number;
   name: string;
@@ -22,6 +21,6 @@ export class DoorsComponent implements OnInit {
   }
 
   getAllRequest() {
-    this.http.get(this.appURL + 'doors/getAll').subscribe(data => {this.results = data as any; });
+    this.http.get(AppUrl.appURL + 'doors/getAll').subscribe(data => {this.results = data as any; });
   }
 }

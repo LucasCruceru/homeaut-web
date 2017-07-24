@@ -1,49 +1,4 @@
-<style>
-  .section-header {
-    position: relative;
-    padding: 20px;
-    margin: 20px -15px;
-    font-size: 14px;
-    border: 1px solid #434857;
-    border-radius: 6px 6px 0px 0px;
-
-    background-color: transparent;
-  }
-
-  .highlight {
-    border: 0;
-    background-color: #1a1c22;
-    padding: 40px;
-    margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 20px;
-  }
-
-  .door-names {
-    text-align: center;
-  }
-
-  .cancel-borders {
-    padding-right: 30px !important;
-    padding-left: 30px !important;
-
-  }
-
-  button {
-    padding: 1px 3px;
-    background: transparent;
-    border: none !important;
-    font-size: 0;
-    outline: none;
-    display: block;
-    height: inherit;
-    width: inherit;
-    cursor: pointer;
-  }
-
-</style>
-
-<div class="container" style="padding-top: 2%;">
+<div class="container">
   <div class="row">
     <div class="col-md-3 sidebar">
       <nav class="sidebar-nav">
@@ -52,7 +7,7 @@
                   data-target="#nav-toggleable-md">
             <span class="sr-only">Toggle nav</span>
           </button>
-          <a class="sidebar-brand img-responsive" href="../dashboard/dashboard.html">
+          <a class="sidebar-brand img-responsive" routerLink="/dashboard">
             <span class="icon icon-home sidebar-brand-icon"></span>
           </a>
         </div>
@@ -61,10 +16,10 @@
           <ul class="nav nav-pills nav-stacked flex-column">
             <li class="nav-header">Directories</li>
             <li class="nav-item">
-              <a class="nav-link active" href="?">Doors</a>
+              <a class="nav-link" routerLink="/doors">Doors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../users/users.html">Users</a>
+              <a class="nav-link" routerLink="/users">Users</a>
             </li>
           </ul>
           <hr class="visible-xs mt-3">
@@ -80,9 +35,7 @@
         <div class="btn-toolbar dashhead-toolbar">
           <div>
             <span class="important-text">Gigel</span>
-            <a href="../index.html">
-              <button type="button" class="btn btn-sm btn-outline-danger">Sign out</button>
-            </a>
+            <button type="button" class="btn btn-sm btn-outline-danger" routerLink="/login">Sign out</button>
           </div>
         </div>
       </div>
@@ -98,6 +51,8 @@
         </div>
 
       </div>
+
     </div>
   </div>
 </div>
+<!--<router-outlet></router-outlet>-->

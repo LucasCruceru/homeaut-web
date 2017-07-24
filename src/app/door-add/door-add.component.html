@@ -35,9 +35,7 @@
         <div class="btn-toolbar dashhead-toolbar">
           <div>
             <span class="important-text">Gigel</span>
-            <a routerLink="/login">
-              <button type="button" class="btn btn-sm btn-outline-danger">Sign out</button>
-            </a>
+            <button type="button" class="btn btn-sm btn-outline-danger" routerLink="/login">Sign out</button>
           </div>
         </div>
       </div>
@@ -55,9 +53,7 @@
       </div>
 
       <div style="float: left;">
-        <a routerLink="/doors">
-          <button type="button" class="btn btn-success" (click)="postRequest()">Create</button>
-        </a>
+        <button type="button" class="btn btn-success" (click)="postRequest()" routerLink="/doors">Create</button>
       </div>
     </div>
   </div>

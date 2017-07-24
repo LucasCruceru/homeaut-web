@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { User } from '../app.component';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User, AppUrl} from '../app.component';
 
 @Component({
   selector: 'app-users',
@@ -8,20 +8,22 @@ import { User } from '../app.component';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
-  appURL = 'http://localhost:8080/';
   results: User[];
   id: number;
   username: string;
   password: string;
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
     this.getAllRequest();
+
   }
 
   getAllRequest() {
-    this.http.get(this.appURL + 'users').subscribe(data => {this.results = data as any; });
-  }
+    this.http.get(AppUrl.appURL + 'users').subscribe(data => {this.results = data as any; });
+    }
 }
+

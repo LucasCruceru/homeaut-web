@@ -16,10 +16,10 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'doors', component: DoorsComponent},
   {path: 'add-door', component: DoorAddComponent},
-  {path: 'door/:id', component: DoorEditComponent},
+  {path: 'door/:dId', component: DoorEditComponent},
   {path: 'users', component: UsersComponent},
   {path: 'add-user', component: UserAddComponent},
-  {path: 'user/:id', component: UserEditComponent}
+  {path: 'user/:uId', component: UserEditComponent}
 ];
 
 @NgModule({

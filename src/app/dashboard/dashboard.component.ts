@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {DoorControlComponent} from './door-control.component';
+import { AppUrl } from '../app.component';
 
 export class Door {
 
@@ -24,7 +25,7 @@ const DOORS: Door[] = [
 })
 export class DashboardComponent implements OnInit {
 
-  appURL = 'http://localhost:8080/dashboard';
+  // appURL = 'http://localhost:8080/dashboard';
 
 
   doors = DOORS;

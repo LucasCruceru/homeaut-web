@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Door } from '../app.component';
+import { Door, AppUrl } from '../app.component';
 
 @Component({
   selector: 'app-door-add',
@@ -8,8 +8,6 @@ import { Door } from '../app.component';
   styleUrls: ['./door-add.component.css']
 })
 export class DoorAddComponent implements OnInit {
-
-  appURL = 'http://localhost:8080/';
   id: number;
   name: string;
   pinNr: number;
@@ -20,6 +18,6 @@ export class DoorAddComponent implements OnInit {
   }
 
   postRequest() {
-    this.http.post(this.appURL + 'doors/', new Door(this.id, this.name, this.pinNr)).subscribe();
+    this.http.post(AppUrl.appURL + 'doors/', new Door(this.id, this.name, this.pinNr)).subscribe();
   }
 }

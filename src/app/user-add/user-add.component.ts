@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../app.component';
+import { User, AppUrl } from '../app.component';
 
 @Component({
   selector: 'app-user-add',
@@ -9,7 +9,6 @@ import { User } from '../app.component';
 })
 export class UserAddComponent implements OnInit {
 
-  appURL = 'http://localhost:8080/';
   id: number;
   username: string;
   password: string;
@@ -20,6 +19,6 @@ export class UserAddComponent implements OnInit {
   }
 
   postRequest() {
-    this.http.post(this.appURL + 'users/', new User(this.id, this.username, this.password)).subscribe();
+    this.http.post(AppUrl.appURL + 'users/', new User(this.id, this.username, this.password)).subscribe();
   }
 }

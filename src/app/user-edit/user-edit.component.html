@@ -35,9 +35,7 @@
         <div class="btn-toolbar dashhead-toolbar">
           <div>
             <span class="important-text">Gigel</span>
-            <a routerLink="/login">
-              <button type="button" class="btn btn-sm btn-outline-danger">Sign out</button>
-            </a>
+            <button type="button" class="btn btn-sm btn-outline-danger" routerLink="/login">Sign out</button>
           </div>
         </div>
       </div>
@@ -62,16 +60,13 @@
         <label class="control-label" for="newPassword">New Password: </label>
         <input type="password" class="form-control" id="newPassword">
       </div>
+
       <div style="float: left;">
-        <a routerLink="/users">
-          <button type="button" class="btn btn-success">Update</button>
-        </a>
+        <button type="button" class="btn btn-success" routerLink="/users">Update</button>
 
       </div>
       <div style="float: right;">
-        <a routerLink="/users">
-          <button type="button" class="btn btn-danger" (click)="deleteRequest()">Delete</button>
-        </a>
+        <button type="button" class="btn btn-danger" (click)="deleteRequest()" routerLink="/users">Delete</button>
       </div>
     </div>
   </div>

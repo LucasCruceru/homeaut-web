@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 
 export class Door {
   id: number;
@@ -20,6 +20,10 @@ export class User {
     this.username = username;
     this. password = password;
   }
+}
+
+export class AppUrl {
+  public static appURL = 'http://localhost:8080/';
 }
 
 @Component({

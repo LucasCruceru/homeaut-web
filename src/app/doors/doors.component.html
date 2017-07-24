@@ -35,9 +35,7 @@
         <div class="btn-toolbar dashhead-toolbar">
           <div>
             <span class="important-text">Gigel</span>
-            <a routerLink="/login">
-              <button type="button" class="btn btn-sm btn-outline-danger">Sign out</button>
-            </a>
+            <button type="button" class="btn btn-sm btn-outline-danger" routerLink="/login">Sign out</button>
           </div>
         </div>
       </div>
@@ -56,15 +54,12 @@
       </div>
 
       <div style="padding: 1.5em">
-        <a routerLink="/add-door">
-          <button type="button" class="btn btn-secondary">
-            <span class="icon icon-plus sidebar-brand-icon"></span>
-            Add door
-          </button>
-        </a>
+        <button type="button" class="btn btn-secondary" routerLink="/add-door">
+          <span class="icon icon-plus sidebar-brand-icon"></span>
+          Add door
+        </button>
       </div>
 
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>

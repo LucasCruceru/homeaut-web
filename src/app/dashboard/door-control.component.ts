@@ -5,7 +5,8 @@ import {Door} from './dashboard.component';
 
 @Component ({
   selector: 'app-door-control',
-  templateUrl: './doorcontrol.html'
+  templateUrl: './doorcontrol.html',
+  styleUrls: ['./door-control.component.css']
 })
 export class DoorControlComponent {
   appURL = 'http://localhost:8080/dashboard';
