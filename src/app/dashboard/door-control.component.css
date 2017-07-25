@@ -51,5 +51,10 @@ button[disabled]{
   display: block;
   height: inherit;
   width: inherit;
-  cursor: pointer;
+  cursor: not-allowed;
+}
+
+button:disabled .statcard {
+  color: black;
+  background: gainsboro ;
 }
