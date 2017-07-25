@@ -23,7 +23,6 @@ export class User {
 }
 
 export class GlobalVar {
-  // public static appURL = 'http://192.168.216.233:8080/';
   public static appURL = 'http://localhost:8080/';
   public static header = '';
 }
