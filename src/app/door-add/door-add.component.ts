@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Door, GlobalVar } from '../app.component';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Door, GlobalVar} from '../app.component';
 
 @Component({
   selector: 'app-door-add',

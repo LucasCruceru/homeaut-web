@@ -24,12 +24,6 @@ export class DoorEditComponent implements OnInit {
 
   ngOnInit() {
     this.getRequest();
-    // this.id = this.resultD.id;
-    // console.log(this.id);
-    // this.name = this.resultD.name;
-    // console.log(this.name);
-    // this.deviceComm = this.resultD.deviceComm;
-    // console.log(this.deviceComm);
   }
 
   getRequest() {

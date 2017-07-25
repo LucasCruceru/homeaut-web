@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User, GlobalVar} from '../app.component';
-import {isNullOrUndefined} from "util";
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-user-edit',
@@ -25,9 +25,6 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
     this.getRequest();
-    // this.id = this.resultU.id;
-    // this.username = this.resultU.username;
-    // this.password = this.resultU.password;
   }
 
   getRequest() {
