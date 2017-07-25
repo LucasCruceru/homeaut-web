@@ -24,19 +24,19 @@ export class DoorsComponent implements OnInit {
   }
 
   getAllRequest() {
-    if (this.searchName == null || this.searchName === '')
+    if (this.searchName == null || this.searchName === '') {
       this.http.get(GlobalVar.appURL + 'api/doors').subscribe(data => {
         this.results = data as Door[];
       });
-    else {
+    } else {
       this.http.get(GlobalVar.appURL + 'api/doors').subscribe(data => {
-
         this.results = [];
         var resultsTemp = data as Door[];
         for (let i = 0; i < resultsTemp.length; i++) {
           var s = resultsTemp[i].name;
-          if (s.indexOf(this.searchName) !== -1)
+          if (s.indexOf(this.searchName) !== -1) {
             this.results.push(resultsTemp[i]);
+          }
         }
       });
     }

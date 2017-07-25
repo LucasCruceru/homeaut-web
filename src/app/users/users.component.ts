@@ -24,21 +24,21 @@ export class UsersComponent implements OnInit {
   }
 
   getAllRequest() {
-    if (this.searchName == null || this.searchName === '')
+    if (this.searchName == null || this.searchName === '') {
       this.http.get(GlobalVar.appURL + 'users').subscribe(data => {
         this.results = data as User[];
       });
-    else {
+    } else {
       this.http.get(GlobalVar.appURL + 'users').subscribe(data => {
-         this.results = [];
+        this.results = [];
         var resultsTemp = data as User[];
         for (let i = 0; i < resultsTemp.length; i++) {
           var s = resultsTemp[i].username;
-          if (s.indexOf(this.searchName) !== -1)
+          if (s.indexOf(this.searchName) !== -1) {
             this.results.push(resultsTemp[i]);
+          }
         }
       });
     }
   }
 }
-
