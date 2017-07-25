@@ -40,3 +40,16 @@ button {
   width: inherit;
   cursor: pointer;
 }
+
+button:disabled,
+button[disabled]{
+  padding: 1px 3px;
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+  outline: none;
+  display: block;
+  height: inherit;
+  width: inherit;
+  cursor: pointer;
+}
