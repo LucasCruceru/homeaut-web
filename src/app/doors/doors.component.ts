@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Door, AppUrl } from '../app.component';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Door, GlobalVar } from '../app.component';
 
 @Component({
   selector: 'app-doors',
@@ -15,7 +16,8 @@ export class DoorsComponent implements OnInit {
   searchId = 0;
   searchName: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
+    GlobalVar.header = activatedRoute.snapshot.url[0].path;
   }
 
   ngOnInit() {
@@ -23,6 +25,6 @@ export class DoorsComponent implements OnInit {
   }
 
   getAllRequest() {
-    this.http.get(AppUrl.appURL + 'api/doors').subscribe(data => {this.results = data as any; });
+    this.http.get(GlobalVar.appURL + 'api/doors').subscribe(data => {this.results = data as any; });
   }
 }

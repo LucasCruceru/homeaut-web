@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { GlobalVar } from '../app.component';
 
 @Component({
   selector: 'app-users-bare',
@@ -12,4 +14,18 @@ export class UsersBareComponent implements OnInit {
   ngOnInit() {
   }
 
+  nameheader(): string {
+    switch (GlobalVar.header) {
+      case 'all': {
+        return 'All Users';
+      }
+      case 'add': {
+        return 'Add User';
+
+      }
+      default: {
+        return 'Edit User';
+      }
+    }
+  }
 }

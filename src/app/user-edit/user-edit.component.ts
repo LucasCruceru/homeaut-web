@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User, AppUrl } from '../app.component';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import { User, GlobalVar } from '../app.component';
 
 @Component({
   selector: 'app-user-edit',
@@ -14,8 +14,9 @@ export class UserEditComponent implements OnInit {
   password: string;
   resultU: User;
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
-    this.route.params.subscribe(params => {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
+    GlobalVar.header = '';
+    this.activatedRoute.params.subscribe(params => {
       this.id = +params['uId'];
     });
   }
@@ -25,17 +26,17 @@ export class UserEditComponent implements OnInit {
   }
 
   getRequest() {
-    this.http.get(AppUrl.appURL + 'users/' + this.id).subscribe(data => {this.resultU = data as any; });
+    this.http.get(GlobalVar.appURL + 'users/' + this.id).subscribe(data => {this.resultU = data as any; });
   }
 
   deleteRequest() {
-    this.http.delete(AppUrl.appURL + 'users/' + this.id).subscribe();
+    this.http.delete(GlobalVar.appURL + 'users/' + this.id).subscribe();
   }
 
   putRequest() {
     this.resultU.id = this.id;
     this.resultU.username = this.username;
     this.resultU.password = this.password;
-    this.http.put(AppUrl.appURL + 'users/' + this.id, this.resultU).subscribe();
+    this.http.put(GlobalVar.appURL + 'users/' + this.id, this.resultU).subscribe();
   }
 }

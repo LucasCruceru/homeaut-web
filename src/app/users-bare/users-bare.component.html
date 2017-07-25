@@ -16,21 +16,22 @@
           <ul class="nav nav-pills nav-stacked flex-column">
             <li class="nav-header">Directories</li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/doors">Doors</a>
+              <a class="nav-link" routerLink="/doors/all">Doors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active">Users</a>
+              <a class="nav-link active" routerLink="/users/all">Users</a>
             </li>
           </ul>
           <hr class="visible-xs mt-3">
         </div>
       </nav>
     </div>
+
     <div class="col-md-9 content">
       <div class="dashhead">
         <div class="dashhead-titles">
           <h6 class="dashhead-subtitle">Homeaut</h6>
-          <h2 class="dashhead-title">OH GOD PLEASE CHANGE</h2>
+          <h2 class="dashhead-title">{{nameheader()}}</h2>
         </div>
         <div class="btn-toolbar dashhead-toolbar">
           <div>

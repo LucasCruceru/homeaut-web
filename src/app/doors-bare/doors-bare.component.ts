@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { GlobalVar } from '../app.component';
 
 @Component({
   selector: 'app-doors-bare',
@@ -12,4 +14,18 @@ export class DoorsBareComponent implements OnInit {
   ngOnInit() {
   }
 
+  nameheader(): string {
+    switch (GlobalVar.header) {
+      case 'all': {
+        return 'All Doors';
+      }
+      case 'add': {
+        return 'Add Door';
+
+      }
+      default: {
+        return 'Edit Door';
+      }
+    }
+  }
 }

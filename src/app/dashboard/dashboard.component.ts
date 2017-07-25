@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {AppUrl} from '../app.component';
+import {GlobalVar} from '../app.component';
 
 export class Door {
 
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getDoorData() {
-    this.http.get(AppUrl.appURL + 'dashboard')
+    this.http.get(GlobalVar.appURL + 'dashboard')
       .map(response => response.json())
       .subscribe(data => {
         this.doors = data;
