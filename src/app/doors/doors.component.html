@@ -1,65 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 sidebar">
-      <nav class="sidebar-nav">
-        <div class="sidebar-header">
-          <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse"
-                  data-target="#nav-toggleable-md">
-            <span class="sr-only">Toggle nav</span>
-          </button>
-          <a class="sidebar-brand img-responsive" routerLink="/dashboard">
-            <span class="icon icon-home sidebar-brand-icon"></span>
-          </a>
-        </div>
+<form class="sidebar-form">
+  <input class="form-control" type="text" placeholder="Search by name...">
+  <button type="submit" class="btn-link">
+    <span class="icon icon-magnifying-glass"></span>
+  </button>
+</form>
 
-        <div class="collapse nav-toggleable-md" id="nav-toggleable-md">
-          <ul class="nav nav-pills nav-stacked flex-column">
-            <li class="nav-header">Directories</li>
-            <li class="nav-item">
-              <a class="nav-link active">Doors</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/users">Users</a>
-            </li>
-          </ul>
-          <hr class="visible-xs mt-3">
-        </div>
-      </nav>
-    </div>
-    <div class="col-md-9 content">
-      <div class="dashhead">
-        <div class="dashhead-titles">
-          <h6 class="dashhead-subtitle">Homeaut</h6>
-          <h2 class="dashhead-title">Door List</h2>
-        </div>
-        <div class="btn-toolbar dashhead-toolbar">
-          <div>
-            <span class="important-text">Gigel</span>
-            <button type="button" class="btn btn-sm btn-outline-danger" routerLink="/login">Sign out</button>
-          </div>
-        </div>
-      </div>
-      <hr class="mt-3">
-      <form class="sidebar-form">
-        <input class="form-control" type="text" placeholder="Search by name...">
-        <button type="submit" class="btn-link">
-          <span class="icon icon-magnifying-glass"></span>
-        </button>
-      </form>
-
-      <div class="d-flex flex-wrap justify-content-start">
-        <div style="padding: 1.5em" *ngFor="let object of results">
-          <button type="button" class="btn btn-lg btn-primary" routerLink="/door/{{object?.id}}">{{object.name}}</button>
-        </div>
-      </div>
-
-      <div style="padding: 1.5em">
-        <button type="button" class="btn btn-secondary" routerLink="/add-door">
-          <span class="icon icon-plus sidebar-brand-icon"></span>
-          Add door
-        </button>
-      </div>
-
-    </div>
+<div class="d-flex flex-wrap justify-content-start">
+  <div style="padding: 1.5em" *ngFor="let object of results">
+    <button type="button" class="btn btn-lg btn-primary" routerLink="/doors/{{object?.id}}">{{object.name}}</button>
   </div>
+</div>
+
+<div style="padding: 1.5em">
+  <button type="button" class="btn btn-secondary" routerLink="/doors/add">
+    <span class="icon icon-plus sidebar-brand-icon"></span>
+    Add door
+  </button>
 </div>

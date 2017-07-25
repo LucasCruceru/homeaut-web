@@ -15,6 +15,8 @@ import {DoorEditComponent} from './door-edit/door-edit.component';
 import {AppRoutingModule} from './app-routing.module';
 import {DoorControlComponent} from './dashboard/door-control.component';
 import {HttpModule} from '@angular/http';
+import { DoorsBareComponent } from './doors-bare/doors-bare.component';
+import { UsersBareComponent } from './users-bare/users-bare.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import {HttpModule} from '@angular/http';
     UserAddComponent,
     DoorAddComponent,
     UserEditComponent,
-    DoorEditComponent
+    DoorEditComponent,
+    DoorsBareComponent,
+    UsersBareComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

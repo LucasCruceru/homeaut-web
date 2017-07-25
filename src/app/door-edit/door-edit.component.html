@@ -1,67 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 sidebar">
-      <nav class="sidebar-nav">
-        <div class="sidebar-header">
-          <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse"
-                  data-target="#nav-toggleable-md">
-            <span class="sr-only">Toggle nav</span>
-          </button>
-          <a class="sidebar-brand img-responsive" routerLink="/dashboard">
-            <span class="icon icon-home sidebar-brand-icon"></span>
-          </a>
-        </div>
+<div>
+  <label class="control-label" for="id">Door ID: </label>
+  <p><input class="form-control" id="id" type="number" placeholder="{{resultD.id}}" readonly=""></p>
+</div>
 
-        <div class="collapse nav-toggleable-md" id="nav-toggleable-md">
-          <ul class="nav nav-pills nav-stacked flex-column">
-            <li class="nav-header">Directories</li>
-            <li class="nav-item">
-              <a class="nav-link active" routerLink="/doors">Doors</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/users">Users</a>
-            </li>
-          </ul>
-          <hr class="visible-xs mt-3">
-        </div>
-      </nav>
-    </div>
-    <div class="col-md-9 content">
-      <div class="dashhead">
-        <div class="dashhead-titles">
-          <h6 class="dashhead-subtitle">Homeaut</h6>
-          <h2 class="dashhead-title">Edit Door</h2>
-        </div>
-        <div class="btn-toolbar dashhead-toolbar">
-          <div>
-            <span class="important-text">Gigel</span>
-            <button type="button" class="btn btn-sm btn-outline-danger" routerLink="/login">Sign out</button>
-          </div>
-        </div>
-      </div>
-      <hr class="mt-3">
-      <div>
-        <label class="control-label" for="id">Door ID: </label>
-        <p><input class="form-control" id="id" type="number" placeholder="{{resultD.id}}" readonly=""></p>
-      </div>
+<div>
+  <label class="control-label" for="name">Name: </label>
+  <p><input class="form-control" id="name" type="text" placeholder="{{resultD.name}}" [(ngModel)]="name"></p>
+</div>
 
-      <div>
-        <label class="control-label" for="name">Name: </label>
-        <p><input class="form-control" id="name" type="text" placeholder="{{resultD.name}}" [(ngModel)]="name"></p>
-      </div>
+<div>
+  <label class="control-label" for="deviceComm">Pin Number: </label>
+  <p><input class="form-control" id="deviceComm" type="text" placeholder="{{resultD.deviceComm}}"
+            [(ngModel)]="deviceComm"></p>
+</div>
 
-      <div>
-        <label class="control-label" for="deviceComm">Pin Number: </label>
-        <p><input class="form-control" id="deviceComm" type="text" placeholder="{{resultD.deviceComm}}" [(ngModel)]="deviceComm"></p>
-      </div>
+<div style="float: left;">
+  <button type="button" class="btn btn-success" (click)="putRequest()" routerLink="/doors/all">Update</button>
+</div>
 
-      <div style="float: left;">
-        <button type="button" class="btn btn-success" routerLink="/doors" (click)="putRequest()">Update</button>
-      </div>
-
-      <div style="float: right;">
-        <button type="button" class="btn btn-danger" (click)="deleteRequest()" routerLink="/doors">Delete</button>
-      </div>
-    </div>
-  </div>
+<div style="float: right;">
+  <button type="button" class="btn btn-danger" (click)="deleteRequest()" routerLink="/doors/all">Delete</button>
 </div>

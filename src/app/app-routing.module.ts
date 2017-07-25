@@ -9,17 +9,31 @@ import { DoorAddComponent } from './door-add/door-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { DoorEditComponent } from './door-edit/door-edit.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {DoorsBareComponent} from './doors-bare/doors-bare.component';
+import {UsersBareComponent} from './users-bare/users-bare.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
+
   {path: 'login', component: LoginComponent},
+
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'doors', component: DoorsComponent},
-  {path: 'add-door', component: DoorAddComponent},
-  {path: 'door/:dId', component: DoorEditComponent},
-  {path: 'users', component: UsersComponent},
-  {path: 'add-user', component: UserAddComponent},
-  {path: 'user/:uId', component: UserEditComponent}
+
+  {path: 'doors', component: DoorsBareComponent,
+    children: [
+      {path: '', redirectTo: 'all', pathMatch: 'full'},
+      {path: 'all', component: DoorsComponent},
+      {path: 'add', component: DoorAddComponent},
+      {path: ':dId', component: DoorEditComponent}
+    ]},
+
+  {path: 'users', component: UsersBareComponent,
+    children: [
+      {path: '', redirectTo: 'all', pathMatch: 'full'},
+      {path: 'all', component: UsersComponent},
+      {path: 'add', component: UserAddComponent},
+      {path: ':uId', component: UserEditComponent}
+    ]}
 ];
 
 @NgModule({
