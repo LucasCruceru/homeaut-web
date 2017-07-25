@@ -9,9 +9,11 @@ import { Door, AppUrl } from '../app.component';
 })
 export class DoorsComponent implements OnInit {
   results: Door[];
-  id: number;
-  name: string;
-  deviceComm: string;
+  // id: number;
+  // name: string;
+  // deviceComm: string;
+  searchId = 0;
+  searchName: string;
 
   constructor(private http: HttpClient) {
   }
