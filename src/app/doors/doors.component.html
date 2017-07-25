@@ -49,7 +49,7 @@
 
       <div class="d-flex flex-wrap justify-content-start">
         <div style="padding: 1.5em" *ngFor="let object of results">
-          <button type="button" class="btn btn-lg btn-primary" routerLink="/door/{{object.id}}">{{object.name}}</button>
+          <button type="button" class="btn btn-lg btn-primary" routerLink="/door/{{object?.id}}">{{object.name}}</button>
         </div>
       </div>
 

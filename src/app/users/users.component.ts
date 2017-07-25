@@ -9,9 +9,11 @@ import {User, AppUrl} from '../app.component';
 })
 export class UsersComponent implements OnInit {
   results: User[];
-  id: number;
-  username: string;
-  password: string;
+  // id: number;
+  // username: string;
+  // password: string;
+  searchId = 0;
+  searchName: string;
 
 
   constructor(private http: HttpClient) {
