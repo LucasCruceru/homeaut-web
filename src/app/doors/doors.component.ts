@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Door, GlobalVar } from '../app.component';
-import {DoorService} from "../door.service";
+import {DoorService} from '../door.service';
 
 @Component({
   selector: 'app-doors',
@@ -26,8 +26,11 @@ export class DoorsComponent implements OnInit {
   }
 
   getDoors(): void {
-    this.doorService
-      .getDoors()
-      .then(doors => this.results = doors);
+    this.doorService.getDoors()
+      .then(doors => {
+        console.log('me', doors);
+        this.results = doors;
+      });
   }
+
 }

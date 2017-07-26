@@ -10,17 +10,18 @@ export class DoorService {
   private headers = new Headers({'Content-Type': 'application/json'});
 
   getDoors(): Promise<Door[]> {
-    const url = 'api/doors';
+    const url = 'http://192.168.216.233:8080/api/doors';
 
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Door[])
+      .then(response => response.json() as Door[])
       .catch(this.handleError);
   }
 
   create(door: Door ): Promise<Door> {
-    const url = 'api/doors';
+    const url = 'http://192.168.216.233:8080/api/doors';
 
+    debugger
     return this.http
       .post(url, JSON.stringify({door: door}), {headers: this.headers})
       .toPromise()
