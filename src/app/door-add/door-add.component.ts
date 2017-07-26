@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Door, GlobalVar} from '../app.component';
 import {Title} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {DeviceCommList} from "../DeviceCommList";
 
 @Component({
   selector: 'app-door-add',
@@ -12,7 +14,9 @@ import {Title} from '@angular/platform-browser';
 export class DoorAddComponent implements OnInit {
   id: number;
   name: string;
-  deviceComm: string;
+
+  deviceCommList = DeviceCommList.deviceCommList;
+  selectedComm = DeviceCommList.selectedComm;
 
   constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
     this.titleService.setTitle('Add door');
@@ -23,6 +27,6 @@ export class DoorAddComponent implements OnInit {
   }
 
   postRequest() {
-    this.http.post(GlobalVar.appURL + 'api/doors/', new Door(this.id, this.name, this.deviceComm)).subscribe();
+    this.http.post(GlobalVar.appURL + 'api/doors/', new Door(this.id, this.name, this.selectedComm)).subscribe();
   }
 }

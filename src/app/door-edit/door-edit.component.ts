@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Door, GlobalVar} from '../app.component';
 import {isNullOrUndefined} from 'util';
 import {Title} from '@angular/platform-browser';
+import {DeviceCommList} from "../DeviceCommList";
 
 @Component({
   selector: 'app-door-edit',
@@ -13,8 +14,12 @@ import {Title} from '@angular/platform-browser';
 export class DoorEditComponent implements OnInit {
   id: number;
   name: string;
+  deviceCommList = DeviceCommList.deviceCommList;
+  selectedComm = DeviceCommList.selectedComm;
   deviceComm: string;
   resultD: Door;
+
+
 
   constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
     this.titleService.setTitle('Modify door');
@@ -31,7 +36,9 @@ export class DoorEditComponent implements OnInit {
   getRequest() {
     this.http.get(GlobalVar.appURL + 'api/doors/' + this.id).subscribe(data => {
       this.resultD = data as Door;
+      this.selectedComm = this.resultD.deviceComm;
     });
+
   }
 
   deleteRequest() {
@@ -42,9 +49,7 @@ export class DoorEditComponent implements OnInit {
     if (!isNullOrUndefined(this.name)) {
       this.resultD.name = this.name;
     }
-    if (!isNullOrUndefined(this.deviceComm)) {
-      this.resultD.deviceComm = this.deviceComm;
-    }
+    this.resultD.deviceComm = this.selectedComm;
     this.http.put(GlobalVar.appURL + 'api/doors/' + this.id, this.resultD).subscribe();
   }
 }
