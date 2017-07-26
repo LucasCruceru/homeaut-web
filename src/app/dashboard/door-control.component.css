@@ -51,5 +51,14 @@ button[disabled]{
   display: block;
   height: inherit;
   width: inherit;
-  cursor: pointer;
+  cursor: not-allowed;
 }
+
+button:disabled .statcard.statcard-danger {
+  background: rgba(222, 68, 86,.5);
+}
+
+button:disabled .statcard.statcard-success {
+  background: rgba(27,201,142,.5);
+}
+

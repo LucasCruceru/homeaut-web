@@ -73,9 +73,9 @@ export class DoorControlComponent {
       document.getElementById("3").removeAttribute("disabled");
       //return this.statusDoor = "Moving";
     } else if (this.statusPercent > 95) {
-      document.getElementById("1").removeAttribute("disabled");
-      document.getElementById("2").setAttribute("disabled", "");
-      document.getElementById("3").removeAttribute("disabled");
+      document.getElementById("1").setAttribute("disabled", "");
+      document.getElementById("2").removeAttribute("disabled");
+      document.getElementById("3").setAttribute("disabled", "");
       //return this.statusDoor = "Open";
     }
   }
