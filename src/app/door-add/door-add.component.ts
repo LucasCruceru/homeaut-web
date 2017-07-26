@@ -21,17 +21,14 @@ export class DoorAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  // postRequest() {
-  //   this.http.post(GlobalVar.appURL + 'api/doors/', new Door(this.id, this.name, this.deviceComm)).subscribe();
-  //   this.router.navigate(['/doors/all']);
-  // }
+  gotoDoors(): void {
+    this.router.navigate(['/doors/all']);
+  }
 
   addDoor(): void {
-    const door = new Door(this.id, this.name, this.deviceComm);
-
-    this.doorService.create(door)
+    this.doorService.create(this.name, this.deviceComm)
       .then(door => {
-        console.log('Created door: ', door);
+        this.gotoDoors();
       });
   }
 }

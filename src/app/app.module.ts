@@ -17,7 +17,7 @@ import {DoorControlComponent} from './dashboard/door-control.component';
 import {HttpModule} from '@angular/http';
 import { DoorsBareComponent } from './doors-bare/doors-bare.component';
 import { UsersBareComponent } from './users-bare/users-bare.component';
-import {DoorService} from "./door.service";
+import {DoorService} from './door.service';
 
 @NgModule({
   imports: [

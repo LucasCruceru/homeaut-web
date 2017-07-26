@@ -18,14 +18,13 @@ export class DoorService {
       .catch(this.handleError);
   }
 
-  create(door: Door ): Promise<Door> {
+  create(name: string, deviceComm: string ): Promise<Door> {
     const url = 'http://192.168.216.233:8080/api/doors';
 
-    debugger
     return this.http
-      .post(url, JSON.stringify({door: door}), {headers: this.headers})
+      .post(url, JSON.stringify({name: name, deviceComm: deviceComm}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data as Door)
+      .then(res => res)
       .catch(this.handleError);
   }
 

@@ -11,9 +11,6 @@ import {DoorService} from '../door.service';
 })
 export class DoorsComponent implements OnInit {
   results: Door[];
-  // id: number;
-  // name: string;
-  // deviceComm: string;
   searchId = 0;
   searchName: string;
 
@@ -28,9 +25,7 @@ export class DoorsComponent implements OnInit {
   getDoors(): void {
     this.doorService.getDoors()
       .then(doors => {
-        console.log('me', doors);
         this.results = doors;
       });
   }
-
 }
