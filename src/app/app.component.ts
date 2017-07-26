@@ -39,7 +39,6 @@ export class GlobalVar {
     <router-outlet></router-outlet>`
 })
 export class AppComponent {
-  title = 'Homeaut';
 
   public constructor(private titleService: Title) {
   }
