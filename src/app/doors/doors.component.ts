@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Door, GlobalVar} from '../app.component';
+import {Title} from '@angular/platform-browser';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-doors',
@@ -15,7 +17,8 @@ export class DoorsComponent implements OnInit {
   // deviceComm: string;
   searchName: string;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
+    this.titleService.setTitle('All doors');
     GlobalVar.header = activatedRoute.snapshot.url[0].path;
   }
 
@@ -24,7 +27,7 @@ export class DoorsComponent implements OnInit {
   }
 
   getAllRequest() {
-    if (this.searchName == null || this.searchName === '') {
+    if (isNullOrUndefined(this.searchName)) {
       this.http.get(GlobalVar.appURL + 'api/doors').subscribe(data => {
         this.results = data as Door[];
       });

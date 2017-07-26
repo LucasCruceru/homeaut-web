@@ -1,4 +1,5 @@
 import {Component, Injectable} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 export class Door {
   id: number;
@@ -37,8 +38,11 @@ export class GlobalVar {
     <router-outlet></router-outlet>`
 })
 export class AppComponent {
-  title = 'Homeaut';
 
-  constructor() {
+  public constructor(private titleService: Title) {
+  }
+
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 }

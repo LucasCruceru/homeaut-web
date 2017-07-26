@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Door, GlobalVar} from '../app.component';
 import {isNullOrUndefined} from 'util';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-door-edit',
@@ -15,7 +16,8 @@ export class DoorEditComponent implements OnInit {
   deviceComm: string;
   resultD: Door;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
+    this.titleService.setTitle('Modify door');
     GlobalVar.header = '';
     this.activatedRoute.params.subscribe(params => {
       this.id = +params['dId'];
