@@ -12,14 +12,13 @@ import {DeviceCommList} from "../DeviceCommList";
   styleUrls: ['./door-edit.component.css']
 })
 export class DoorEditComponent implements OnInit {
+
   id: number;
   name: string;
   deviceCommList = DeviceCommList.deviceCommList;
   selectedComm = DeviceCommList.selectedComm;
   deviceComm: string;
   resultD: Door;
-
-
 
   constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
     this.titleService.setTitle('Modify door');
@@ -38,7 +37,6 @@ export class DoorEditComponent implements OnInit {
       this.resultD = data as Door;
       this.selectedComm = this.resultD.deviceComm;
     });
-
   }
 
   deleteRequest() {
