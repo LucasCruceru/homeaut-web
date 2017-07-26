@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { GlobalVar } from '../app.component';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {GlobalVar} from '../app.component';
 
 @Component({
   selector: 'app-doors-bare',
@@ -9,7 +9,8 @@ import { GlobalVar } from '../app.component';
 })
 export class DoorsBareComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {GlobalVar} from '../app.component';
+import {Title} from '@angular/platform-browser';
 
 export class Door {
 
@@ -37,7 +38,8 @@ export class DashboardComponent implements OnInit {
     this.getDoorData();
   }
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private titleService: Title) {
+    this.titleService.setTitle('Dashboard');
   }
 
   getDoorData() {

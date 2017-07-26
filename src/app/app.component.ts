@@ -1,9 +1,11 @@
 import {Component, Injectable} from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 export class Door {
   id: number;
   name: string;
   deviceComm: string;
+
   constructor(id: number, name: string, deviceComm: string) {
     this.id = id;
     this.name = name;
@@ -15,10 +17,11 @@ export class User {
   id: number;
   username: string;
   password: string;
+
   constructor(id: number, username: string, password: string) {
     this.id = id;
     this.username = username;
-    this. password = password;
+    this.password = password;
   }
 }
 
@@ -32,10 +35,16 @@ export class GlobalVar {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  template: `<router-outlet></router-outlet>`
+  template: `
+    <router-outlet></router-outlet>`
 })
 export class AppComponent {
   title = 'Homeaut';
 
-  constructor() { }
+  public constructor(private titleService: Title) {
+  }
+
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
 }

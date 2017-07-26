@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
-import { User, GlobalVar } from '../app.component';
+import {User, GlobalVar} from '../app.component';
+import {isNullOrUndefined} from 'util';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-edit',
@@ -11,10 +13,12 @@ import { User, GlobalVar } from '../app.component';
 export class UserEditComponent implements OnInit {
   id: number;
   username: string;
-  password: string;
+  oldPassword: string;
+  newPassword: string;
   resultU: User;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
+    this.titleService.setTitle('Modify user');
     GlobalVar.header = '';
     this.activatedRoute.params.subscribe(params => {
       this.id = +params['uId'];
@@ -26,7 +30,9 @@ export class UserEditComponent implements OnInit {
   }
 
   getRequest() {
-    this.http.get(GlobalVar.appURL + 'users/' + this.id).subscribe(data => {this.resultU = data as any; });
+    this.http.get(GlobalVar.appURL + 'users/' + this.id).subscribe(data => {
+      this.resultU = data as any;
+    });
   }
 
   deleteRequest() {
@@ -34,9 +40,14 @@ export class UserEditComponent implements OnInit {
   }
 
   putRequest() {
-    this.resultU.id = this.id;
-    this.resultU.username = this.username;
-    this.resultU.password = this.password;
-    this.http.put(GlobalVar.appURL + 'users/' + this.id, this.resultU).subscribe();
+    // if (this.oldPassword === this.resultU.password) {
+    if (!isNullOrUndefined(this.username)) {
+      this.resultU.username = this.username;
+    }
+    if (!isNullOrUndefined(this.newPassword)) {
+      this.resultU.password = this.newPassword;
+    }
+    this.http.put(GlobalVar.appURL + 'users/'/* + this.id*/, this.resultU).subscribe();
+    // }
   }
 }

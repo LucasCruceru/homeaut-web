@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User, GlobalVar } from '../app.component';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-add',
@@ -13,7 +14,8 @@ export class UserAddComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
+    this.titleService.setTitle('Add user');
     GlobalVar.header = activatedRoute.snapshot.url[0].path;
   }
 

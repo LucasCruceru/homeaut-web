@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Door, GlobalVar } from '../app.component';
+import {Door, GlobalVar} from '../app.component';
+import {isNullOrUndefined} from 'util';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-door-edit',
@@ -14,7 +16,8 @@ export class DoorEditComponent implements OnInit {
   deviceComm: string;
   resultD: Door;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
+    this.titleService.setTitle('Modify door');
     GlobalVar.header = '';
     this.activatedRoute.params.subscribe(params => {
       this.id = +params['dId'];
@@ -26,7 +29,9 @@ export class DoorEditComponent implements OnInit {
   }
 
   getRequest() {
-    this.http.get(GlobalVar.appURL + 'api/doors/' + this.id).subscribe(data => {this.resultD = data as Door; });
+    this.http.get(GlobalVar.appURL + 'api/doors/' + this.id).subscribe(data => {
+      this.resultD = data as Door;
+    });
   }
 
   deleteRequest() {
@@ -34,9 +39,12 @@ export class DoorEditComponent implements OnInit {
   }
 
   putRequest() {
-    this.resultD.id = this.id;
-    this.resultD.name = this.name;
-    this.resultD.deviceComm = this.deviceComm;
+    if (!isNullOrUndefined(this.name)) {
+      this.resultD.name = this.name;
+    }
+    if (!isNullOrUndefined(this.deviceComm)) {
+      this.resultD.deviceComm = this.deviceComm;
+    }
     this.http.put(GlobalVar.appURL + 'api/doors/' + this.id, this.resultD).subscribe();
   }
 }
