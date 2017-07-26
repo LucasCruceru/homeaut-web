@@ -1,4 +1,4 @@
-import {Component, Injectable} from '@angular/core';
+import {Component} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 
 export class Door {
@@ -35,8 +35,7 @@ export class GlobalVar {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  template: `
-    <router-outlet></router-outlet>`
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
   title = 'Homeaut';
