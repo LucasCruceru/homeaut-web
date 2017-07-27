@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {User, GlobalVar} from '../app.component';
 import {isNullOrUndefined} from 'util';
 import {Title} from '@angular/platform-browser';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -17,37 +18,35 @@ export class UserEditComponent implements OnInit {
   newPassword: string;
   resultU: User;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
-    this.titleService.setTitle('Modify user');
-    GlobalVar.header = '';
-    this.activatedRoute.params.subscribe(params => {
-      this.id = +params['uId'];
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
+    private titleService: Title, private userService: UserService) {
+      this.titleService.setTitle('Modify user');
+      GlobalVar.header = '';
+      this.activatedRoute.params.subscribe(params => {
+        this.id = +params['uId'];
     });
   }
 
   ngOnInit() {
-    this.getRequest();
+    this.getUser();
   }
 
-  getRequest() {
-    this.http.get(GlobalVar.appURL + 'users/' + this.id).subscribe(data => {
-      this.resultU = data as any;
-    });
+  gotoUsers(): void {
+    this.router.navigate(['/users/all']);
   }
 
-  deleteRequest() {
-    this.http.delete(GlobalVar.appURL + 'users/' + this.id).subscribe();
+  getUser(): void {
+    this.userService.getOne(this.id)
+      .then(user => {this.resultU = user; });
   }
 
-  putRequest() {
-    // if (this.oldPassword === this.resultU.password) {
-    if (!isNullOrUndefined(this.username)) {
-      this.resultU.username = this.username;
-    }
-    if (!isNullOrUndefined(this.newPassword)) {
-      this.resultU.password = this.newPassword;
-    }
-    this.http.put(GlobalVar.appURL + 'users/'/* + this.id*/, this.resultU).subscribe();
-    // }
+  deleteUser(): void {
+    this.userService.delete(this.id)
+      .then(user => {this.gotoUsers(); });
+  }
+
+  updateUser(): void {
+    this.userService.update(this.id, this.username, this.newPassword, this.resultU)
+      .then(user => {this.gotoUsers(); });
   }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User, GlobalVar } from '../app.component';
 import {Title} from '@angular/platform-browser';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-user-add',
@@ -10,19 +11,24 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent implements OnInit {
-  id: number;
   username: string;
   password: string;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
-    this.titleService.setTitle('Add user');
-    GlobalVar.header = activatedRoute.snapshot.url[0].path;
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
+    private titleService: Title, private userService: UserService) {
+      this.titleService.setTitle('Add user');
+      GlobalVar.header = activatedRoute.snapshot.url[0].path;
   }
 
   ngOnInit() {
   }
 
-  postRequest() {
-    this.http.post(GlobalVar.appURL + 'users/', new User(this.id, this.username, this.password)).subscribe();
+  gotoUsers(): void {
+    this.router.navigate(['/users/all']);
+  }
+
+  addUser(): void {
+    this.userService.create(this.username, this.password)
+      .then(door => {this.gotoUsers(); });
   }
 }

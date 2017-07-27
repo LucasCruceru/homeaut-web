@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {User, GlobalVar} from '../app.component';
 import {Title} from '@angular/platform-browser';
 import {isNullOrUndefined} from 'util';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-users',
@@ -12,36 +13,34 @@ import {isNullOrUndefined} from 'util';
 })
 export class UsersComponent implements OnInit {
   results: User[];
-  // id: number;
-  // username: string;
-  // password: string;
   searchName: string;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
+    private titleService: Title, private userService: UserService) {
     this.titleService.setTitle('All users');
     GlobalVar.header = activatedRoute.snapshot.url[0].path;
   }
 
   ngOnInit() {
-    this.getAllRequest();
+    this.getUsers();
   }
 
-  getAllRequest() {
-    if (isNullOrUndefined(this.searchName)) {
-      this.http.get(GlobalVar.appURL + 'users').subscribe(data => {
-        this.results = data as User[];
-      });
-    } else {
-      this.http.get(GlobalVar.appURL + 'users').subscribe(data => {
+  getUsers(): void {
+    this.userService.getAll()
+      .then(users => {this.results = users; });
+  }
+
+  getSearch(): void {
+    this.userService.getAll()
+      .then(users => {
         this.results = [];
-        var resultsTemp = data as User[];
+        const resultsTemp = users;
         for (let i = 0; i < resultsTemp.length; i++) {
-          var s = resultsTemp[i].username;
+          const s = resultsTemp[i].username;
           if (s.indexOf(this.searchName) !== -1) {
             this.results.push(resultsTemp[i]);
           }
         }
       });
-    }
   }
 }

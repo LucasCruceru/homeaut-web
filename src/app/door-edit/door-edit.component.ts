@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Door, GlobalVar} from '../app.component';
 import {isNullOrUndefined} from 'util';
 import {Title} from '@angular/platform-browser';
+import {DoorService} from '../door.service';
 
 @Component({
   selector: 'app-door-edit',
@@ -16,35 +17,35 @@ export class DoorEditComponent implements OnInit {
   deviceComm: string;
   resultD: Door;
 
-  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute, private titleService: Title) {
-    this.titleService.setTitle('Modify door');
-    GlobalVar.header = '';
-    this.activatedRoute.params.subscribe(params => {
-      this.id = +params['dId'];
+  constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
+    private titleService: Title, private doorService: DoorService) {
+      this.titleService.setTitle('Modify door');
+      GlobalVar.header = '';
+      this.activatedRoute.params.subscribe(params => {
+        this.id = +params['dId'];
     });
   }
 
   ngOnInit() {
-    this.getRequest();
+    this.getDoor();
   }
 
-  getRequest() {
-    this.http.get(GlobalVar.appURL + 'api/doors/' + this.id).subscribe(data => {
-      this.resultD = data as Door;
-    });
+  gotoDoors(): void {
+    this.router.navigate(['/doors/all']);
   }
 
-  deleteRequest() {
-    this.http.delete(GlobalVar.appURL + 'api/doors/' + this.id).subscribe();
+  getDoor(): void {
+    this.doorService.getOne(this.id)
+      .then(door => {this.resultD = door; });
   }
 
-  putRequest() {
-    if (!isNullOrUndefined(this.name)) {
-      this.resultD.name = this.name;
-    }
-    if (!isNullOrUndefined(this.deviceComm)) {
-      this.resultD.deviceComm = this.deviceComm;
-    }
-    this.http.put(GlobalVar.appURL + 'api/doors/' + this.id, this.resultD).subscribe();
+  deleteDoor(): void {
+    this.doorService.delete(this.id)
+      .then(door => {this.gotoDoors(); });
+  }
+
+  updateDoor(): void {
+    this.doorService.update(this.id, this.name, this.deviceComm, this.resultD)
+      .then(door => {this.gotoDoors(); });
   }
 }
