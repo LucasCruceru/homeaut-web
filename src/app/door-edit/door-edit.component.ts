@@ -24,7 +24,7 @@ export class DoorEditComponent implements OnInit {
       this.titleService.setTitle('Modify door');
       GlobalVar.header = '';
       this.activatedRoute.params.subscribe(params => {
-        this.id = +params['dId'];
+        this.id = +params['id'];
     });
   }
 

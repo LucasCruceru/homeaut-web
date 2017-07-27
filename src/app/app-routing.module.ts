@@ -24,7 +24,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'all', pathMatch: 'full'},
       {path: 'all', component: DoorsComponent},
       {path: 'add', component: DoorAddComponent},
-      {path: ':dId', component: DoorEditComponent}
+      {path: ':id', component: DoorEditComponent}
     ]},
 
   {path: 'users', component: UsersBareComponent,
@@ -32,7 +32,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'all', pathMatch: 'full'},
       {path: 'all', component: UsersComponent},
       {path: 'add', component: UserAddComponent},
-      {path: ':uId', component: UserEditComponent}
+      {path: ':id', component: UserEditComponent}
     ]}
 ];
 

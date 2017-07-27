@@ -1,18 +1,13 @@
 <div>
   <label class="control-label" for="id">User ID: </label>
-  <p><input class="form-control" id="id" type="number" placeholder="{{resultU.id}}" readonly=""></p>
+  <p><input class="form-control" id="id" type="number" placeholder="{{resultU?.id}}" readonly=""></p>
 </div>
 
 <div>
   <label class="control-label" for="username">Username: </label>
-  <p><input class="form-control" id="username" type="text" placeholder="{{resultU.username}}" [(ngModel)]="username">
+  <p><input class="form-control" id="username" type="text" placeholder="{{resultU?.username}}" [(ngModel)]="username">
   </p>
 </div>
-
-<!--<div class="form-group has-success has-feedback">-->
-  <!--<label class="control-label" for="oldPassword">Old Password: </label>-->
-  <!--<input type="password" class="form-control" id="oldPassword" [(ngModel)]="oldPassword">-->
-<!--</div>-->
 
 <div class="form-group has-success has-feedback">
   <label class="control-label" for="newPassword">New Password: </label>

@@ -23,7 +23,7 @@ export class UserEditComponent implements OnInit {
       this.titleService.setTitle('Modify user');
       GlobalVar.header = '';
       this.activatedRoute.params.subscribe(params => {
-        this.id = +params['uId'];
+        this.id = +params['id'];
     });
   }
 
