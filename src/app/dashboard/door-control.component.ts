@@ -4,7 +4,6 @@ import {Door} from './dashboard.component';
 import {GlobalVar} from '../app.component';
 import {DashboardService} from '../dashboard.service';
 
-
 @Component ({
   selector: 'app-door-control',
   templateUrl: './doorcontrol.html',
@@ -22,24 +21,21 @@ export class DoorControlComponent {
 
   openDoor() {
     this.dashboardService.open(this.door.name).then(resp => resp);
-    // this.http.get(GlobalVar.appURL + '/dashboard/open/' + this.door.name).subscribe();
   }
 
   closeDoor() {
     this.dashboardService.close(this.door.name).then(resp => resp);
-    // this.http.get(GlobalVar.appURL + '/dashboard/close/' + this.door.name).subscribe();
   }
 
   stopDoor() {
     this.dashboardService.stop(this.door.name).then(resp => resp);
-    // this.http.get(GlobalVar.appURL + '/dashboard/stop/' + this.door.name).subscribe();
   }
 
   getStatusPercent() {
-    this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.door.name).subscribe(data => {
-      this.statusPercent = Number(data['_body']);
-    });
-
+    this.http.get(this.appURL + '/dashboard/status/' + this.door.name).subscribe(data => {
+      this.statusPercent = data.json()[this.door.deviceComm];
+    })
+    
     this.getStatus();
     this.showProgress();
     this.disable();
