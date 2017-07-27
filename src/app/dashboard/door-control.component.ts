@@ -3,12 +3,12 @@ import { Http } from '@angular/http';
 import {Door} from './dashboard.component';
 import {GlobalVar} from '../app.component';
 import {DashboardService} from '../dashboard.service';
-
-@Component ({
-  selector: 'app-door-control',
-  templateUrl: './doorcontrol.html',
-  styleUrls: ['./door-control.component.css']
-})
+//
+// @Component ({
+//   selector: 'app-door-control',
+//   templateUrl: './doorcontrol.html',
+//   styleUrls: ['./door-control.component.css']
+// })
 export class DoorControlComponent {
   @Input() door: Door;
 

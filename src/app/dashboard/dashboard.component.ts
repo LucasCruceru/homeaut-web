@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {GlobalVar} from '../app.component';
 import {Title} from '@angular/platform-browser';
 import {DashboardService} from '../dashboard.service';
 
@@ -94,10 +93,10 @@ export class DashboardComponent implements OnInit {
   }
 
   showProgress1(){
-    document.getElementsByClassName("list-group-progress")[0].setAttribute("style", "width: 0; width: " + this.statusPercent1 + "%");
+    document.getElementById("bar1").setAttribute("style", "width: 0; width: " + this.statusPercent1 + "%");
   }
   showProgress2(){
-    document.getElementsByClassName("list-group-progress")[0].setAttribute("style", "width: 0; width: " + this.statusPercent1 + "%");
+    document.getElementById("bar2").setAttribute("style", "width: 0; width: " + this.statusPercent2 + "%");
   }
 
   disable1(){
@@ -120,19 +119,19 @@ export class DashboardComponent implements OnInit {
   }
   disable2(){
     if (this.statusPercent2 < 5) {
-      document.getElementById("1").removeAttribute("disabled");
-      document.getElementById("2").setAttribute("disabled", "");
-      document.getElementById("3").setAttribute("disabled", "");
+      document.getElementById("4").removeAttribute("disabled");
+      document.getElementById("5").setAttribute("disabled", "");
+      document.getElementById("6").setAttribute("disabled", "");
       // return this.statusDoor = "Closed";
     } else if (this.statusPercent2 > 5 && this.statusPercent2 < 95) {
-      document.getElementById("1").removeAttribute("disabled");
-      document.getElementById("2").removeAttribute("disabled");
-      document.getElementById("3").removeAttribute("disabled");
+      document.getElementById("4").removeAttribute("disabled");
+      document.getElementById("5").removeAttribute("disabled");
+      document.getElementById("6").removeAttribute("disabled");
       //return this.statusDoor = "Moving";
     } else if (this.statusPercent2 > 95) {
-      document.getElementById("1").setAttribute("disabled", "");
-      document.getElementById("2").removeAttribute("disabled");
-      document.getElementById("3").setAttribute("disabled", "");
+      document.getElementById("4").setAttribute("disabled", "");
+      document.getElementById("5").removeAttribute("disabled");
+      document.getElementById("6").setAttribute("disabled", "");
       //return this.statusDoor = "Open";
     }
   }

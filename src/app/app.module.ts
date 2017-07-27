@@ -13,7 +13,6 @@ import {DoorAddComponent} from './door-add/door-add.component';
 import {UserEditComponent} from './user-edit/user-edit.component';
 import {DoorEditComponent} from './door-edit/door-edit.component';
 import {AppRoutingModule} from './app-routing.module';
-import {DoorControlComponent} from './dashboard/door-control.component';
 import {HttpModule} from '@angular/http';
 import { DoorsBareComponent } from './doors-bare/doors-bare.component';
 import { UsersBareComponent } from './users-bare/users-bare.component';
@@ -32,7 +31,6 @@ import {DashboardService} from './dashboard.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    DoorControlComponent,
     DashboardComponent,
     UsersComponent,
     DoorsComponent,
