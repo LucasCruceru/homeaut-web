@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Title} from '@angular/platform-browser';
@@ -17,7 +17,7 @@ export class Door {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
 
   doors: any = [];
@@ -139,6 +139,11 @@ export class DashboardComponent implements OnInit {
   getDoorData() {
     this.dashboardService.getAll()
       .then(doors => {this.doors = doors; });
+  }
+
+  ngOnDestroy(): void {
+    if(this.interval)
+      clearInterval(this.interval);
   }
 
   // getDoorData() {
