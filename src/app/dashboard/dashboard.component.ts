@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {GlobalVar} from '../app.component';
 import {Title} from '@angular/platform-browser';
+import {DashboardService} from '../dashboard.service';
 
 export class Door {
 
@@ -38,16 +39,21 @@ export class DashboardComponent implements OnInit {
     this.getDoorData();
   }
 
-  constructor(private http: Http, private titleService: Title) {
+  constructor(private http: Http, private titleService: Title, private dashboardService: DashboardService) {
     this.titleService.setTitle('Dashboard');
   }
 
   getDoorData() {
-    this.http.get(GlobalVar.appURL + 'dashboard')
-      .map(response => response.json())
-      .subscribe(data => {
-        this.doors = data;
-      });
+    this.dashboardService.getAll()
+      .then(doors => {this.doors = doors; });
   }
+
+  // getDoorData() {
+  //   this.http.get(GlobalVar.appURL + 'dashboard')
+  //     .map(response => response.json())
+  //     .subscribe(data => {
+  //       this.doors = data;
+  //     });
+  // }
 
 }

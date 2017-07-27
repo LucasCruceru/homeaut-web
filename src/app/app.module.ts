@@ -19,6 +19,7 @@ import { DoorsBareComponent } from './doors-bare/doors-bare.component';
 import { UsersBareComponent } from './users-bare/users-bare.component';
 import {DoorService} from './door.service';
 import {UserService} from './user.service';
+import {DashboardService} from './dashboard.service';
 
 @NgModule({
   imports: [
@@ -42,7 +43,7 @@ import {UserService} from './user.service';
     DoorsBareComponent,
     UsersBareComponent
   ],
-  providers: [DoorService, UserService],
+  providers: [DoorService, UserService, DashboardService],
   bootstrap: [AppComponent]
 })
 

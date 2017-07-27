@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import {Door} from './dashboard.component';
+import {GlobalVar} from '../app.component';
+import {DashboardService} from '../dashboard.service';
 
 
 @Component ({
@@ -9,33 +11,34 @@ import {Door} from './dashboard.component';
   styleUrls: ['./door-control.component.css']
 })
 export class DoorControlComponent {
-  appURL = 'http://192.168.216.233:8080';
-
   @Input() door: Door;
 
   statusPercent: number;
 
   statusDoor: string;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private dashboardService: DashboardService) {
   }
 
   openDoor() {
-    this.http.get(this.appURL + '/dashboard/open/' + this.door.name).subscribe()
+    this.dashboardService.open(this.door.name).then(resp => resp);
+    // this.http.get(GlobalVar.appURL + '/dashboard/open/' + this.door.name).subscribe();
   }
 
   closeDoor() {
-    this.http.get(this.appURL + '/dashboard/close/' + this.door.name).subscribe()
+    this.dashboardService.close(this.door.name).then(resp => resp);
+    // this.http.get(GlobalVar.appURL + '/dashboard/close/' + this.door.name).subscribe();
   }
 
   stopDoor() {
-    this.http.get(this.appURL + '/dashboard/stop/' + this.door.name).subscribe()
+    this.dashboardService.stop(this.door.name).then(resp => resp);
+    // this.http.get(GlobalVar.appURL + '/dashboard/stop/' + this.door.name).subscribe();
   }
 
   getStatusPercent() {
-    this.http.get(this.appURL + '/dashboard/status/' + this.door.name).subscribe(data => {
-      this.statusPercent = Number(data["_body"]);
-    })
+    this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.door.name).subscribe(data => {
+      this.statusPercent = Number(data['_body']);
+    });
 
     this.getStatus();
     this.showProgress();
@@ -43,40 +46,40 @@ export class DoorControlComponent {
   }
 
   interval = setInterval(() => {
-    this.getStatusPercent()
+    this.getStatusPercent();
   }, 200);
 
 
   getStatus() {
     if (this.statusPercent < 5) {
-      return this.statusDoor = "Closed";
+      return this.statusDoor = 'Closed';
     } else if (this.statusPercent > 5 && this.statusPercent < 95) {
-      return this.statusDoor = "Moving";
+      return this.statusDoor = 'Moving';
     } else if (this.statusPercent > 95) {
-      return this.statusDoor = "Open";
+      return this.statusDoor = 'Open';
     }
   }
 
-  showProgress(){
-    document.getElementsByClassName("list-group-progress")[0].setAttribute("style", "width: 0; width: " + this.statusPercent + "%");
+  showProgress() {
+    document.getElementsByClassName('list-group-progress')[0].setAttribute('style', 'width: 0; width: ' + this.statusPercent + '%');
   }
 
-  disable(){
+  disable() {
     if (this.statusPercent < 5) {
-      document.getElementById("1").removeAttribute("disabled");
-      document.getElementById("2").setAttribute("disabled", "");
-      document.getElementById("3").setAttribute("disabled", "");
+      document.getElementById('1').removeAttribute('disabled');
+      document.getElementById('2').setAttribute('disabled', '');
+      document.getElementById('3').setAttribute('disabled', '');
       // return this.statusDoor = "Closed";
     } else if (this.statusPercent > 5 && this.statusPercent < 95) {
-      document.getElementById("1").removeAttribute("disabled");
-      document.getElementById("2").removeAttribute("disabled");
-      document.getElementById("3").removeAttribute("disabled");
-      //return this.statusDoor = "Moving";
+      document.getElementById('1').removeAttribute('disabled');
+      document.getElementById('2').removeAttribute('disabled');
+      document.getElementById('3').removeAttribute('disabled');
+      // return this.statusDoor = "Moving";
     } else if (this.statusPercent > 95) {
-      document.getElementById("1").setAttribute("disabled", "");
-      document.getElementById("2").removeAttribute("disabled");
-      document.getElementById("3").setAttribute("disabled", "");
-      //return this.statusDoor = "Open";
+      document.getElementById('1').setAttribute('disabled', '');
+      document.getElementById('2').removeAttribute('disabled');
+      document.getElementById('3').setAttribute('disabled', '');
+      // return this.statusDoor = "Open";
     }
   }
 }

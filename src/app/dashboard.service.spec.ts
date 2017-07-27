@@ -1,15 +1,15 @@
 import {TestBed, inject} from '@angular/core/testing';
 
-import {DoorService} from './door.service';
+import {DashboardService} from './dashboard.service';
 
 describe('DoorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DoorService]
+      providers: [DashboardService]
     });
   });
 
-  it('Should be created', inject([DoorService], (service: DoorService) => {
+  it('Should be created', inject([DashboardService], (service: DashboardService) => {
     expect(service).toBeTruthy();
   }));
 });
