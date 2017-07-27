@@ -21,7 +21,6 @@ export class UsersBareComponent implements OnInit {
       }
       case 'add': {
         return 'Add User';
-
       }
       default: {
         return 'Edit User';

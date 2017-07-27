@@ -22,7 +22,6 @@ export class DoorsBareComponent implements OnInit {
       }
       case 'add': {
         return 'Add Door';
-
       }
       default: {
         return 'Edit Door';
