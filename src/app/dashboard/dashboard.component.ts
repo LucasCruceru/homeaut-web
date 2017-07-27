@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   getStatusPercentDoor1() {
     this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.doors[0].name).subscribe(data => {
       this.statusPercent1 = data.json()[this.doors[0].deviceComm];
-    })
+    });
 
     this.getStatus1();
     this.showProgress1();
@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   getStatusPercentDoor2() {
     this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.doors[1].name).subscribe(data => {
       this.statusPercent2 = data.json()[this.doors[1].deviceComm];
-    })
+    });
 
     this.getStatus2();
     this.showProgress2();
