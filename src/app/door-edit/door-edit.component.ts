@@ -5,6 +5,7 @@ import {Door, GlobalVar} from '../app.component';
 import {isNullOrUndefined} from 'util';
 import {Title} from '@angular/platform-browser';
 import {DoorService} from '../door.service';
+import {DeviceCommList} from '../DeviceCommList';
 
 @Component({
   selector: 'app-door-edit',
@@ -14,7 +15,8 @@ import {DoorService} from '../door.service';
 export class DoorEditComponent implements OnInit {
   id: number;
   name: string;
-  deviceComm: string;
+  deviceCommList = DeviceCommList.deviceCommList;
+  selectedComm = DeviceCommList.selectedComm;
   resultD: Door;
 
   constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
@@ -36,7 +38,7 @@ export class DoorEditComponent implements OnInit {
 
   getDoor(): void {
     this.doorService.getOne(this.id)
-      .then(door => {this.resultD = door; });
+      .then(door => {this.resultD = door; this.selectedComm = this.resultD.deviceComm; });
   }
 
   deleteDoor(): void {
@@ -45,7 +47,7 @@ export class DoorEditComponent implements OnInit {
   }
 
   updateDoor(): void {
-    this.doorService.update(this.id, this.name, this.deviceComm, this.resultD)
+    this.doorService.update(this.id, this.name, this.selectedComm, this.resultD)
       .then(door => {this.gotoDoors(); });
   }
 }

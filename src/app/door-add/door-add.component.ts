@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Door, GlobalVar} from '../app.component';
 import {Title} from '@angular/platform-browser';
 import {DoorService} from '../door.service';
+import {DeviceCommList} from '../DeviceCommList';
 
 @Component({
   selector: 'app-door-add',
@@ -12,7 +13,8 @@ import {DoorService} from '../door.service';
 })
 export class DoorAddComponent implements OnInit {
   name: string;
-  deviceComm: string;
+  deviceCommList = DeviceCommList.deviceCommList;
+  selectedComm = DeviceCommList.selectedComm;
 
   constructor(private http: HttpClient, private router: Router, private activatedRoute: ActivatedRoute,
     private titleService: Title, private doorService: DoorService) {
@@ -28,7 +30,7 @@ export class DoorAddComponent implements OnInit {
   }
 
   addDoor(): void {
-    this.doorService.create(this.name, this.deviceComm)
+    this.doorService.create(this.name, this.selectedComm)
       .then(door => {this.gotoDoors(); });
   }
 }

@@ -9,9 +9,11 @@
 </div>
 
 <div>
-  <label class="control-label" for="deviceComm">Pin Number: </label>
-  <p><input class="form-control" id="deviceComm" type="text" placeholder="{{resultD.deviceComm}}"
-            [(ngModel)]="deviceComm"></p>
+  <label class="control-label" for="deviceCommList">Pin Number &nbsp;</label>
+  <select [(ngModel)] = "selectedComm" class="form-control-sm" style="background: #434857; color: white">
+    <option id="deviceCommList" *ngFor="let c of deviceCommList" value={{c.name}} class = "form-control">{{c.name}}</option>
+  </select>
+  <p></p>
 </div>
 
 <div style="float: left;">

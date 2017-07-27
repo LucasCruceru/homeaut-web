@@ -5,8 +5,10 @@
 </div>
 
 <div class="form-group has-success has-feedback">
-  <label class="control-label" for="deviceComm">Pin Number: </label>
-  <input type="text" class="form-control" id="deviceComm" [(ngModel)]="deviceComm">
+  <label class="control-label" for="deviceCommList">Pin Number &nbsp; </label>
+  <select [(ngModel)] = "selectedComm" class="form-control-sm" style="background: #434857; color: white">
+    <option id="deviceCommList" *ngFor="let c of deviceCommList" value={{c.name}} class = "form-control">{{c.name}}</option>
+  </select>
   <span class="glyphicon glyphicon-ok form-control-feedback"></span>
 </div>
 
