@@ -32,10 +32,10 @@ export class DoorControlComponent {
   }
 
   getStatusPercent() {
-    this.http.get(this.appURL + '/dashboard/status/' + this.door.name).subscribe(data => {
+    this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.door.name).subscribe(data => {
       this.statusPercent = data.json()[this.door.deviceComm];
     })
-    
+
     this.getStatus();
     this.showProgress();
     this.disable();
