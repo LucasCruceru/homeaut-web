@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Title} from '@angular/platform-browser';
 import {DashboardService} from '../dashboard.service';
+import {GlobalVar} from "../app.component";
 
 export class Door {
 
@@ -18,7 +19,6 @@ export class Door {
 })
 export class DashboardComponent implements OnInit {
 
-  appURL = 'http://192.168.216.233:8080';
 
   doors: any = [];
   statusPercent1: number;
@@ -36,19 +36,19 @@ export class DashboardComponent implements OnInit {
   }
 
   openDoor(index: number) {
-    this.http.get(this.appURL + '/dashboard/open/' + this.doors[index].name).subscribe()
+    this.http.get(GlobalVar.appURL + '/dashboard/open/' + this.doors[index].name).subscribe()
   }
 
   closeDoor(index: number) {
-    this.http.get(this.appURL + '/dashboard/close/' + this.doors[index].name).subscribe()
+    this.http.get(GlobalVar.appURL + '/dashboard/close/' + this.doors[index].name).subscribe()
   }
 
   stopDoor(index: number) {
-    this.http.get(this.appURL + '/dashboard/stop/' + this.doors[index].name).subscribe()
+    this.http.get(GlobalVar.appURL + '/dashboard/stop/' + this.doors[index].name).subscribe()
   }
 
   getStatusPercentDoor1() {
-    this.http.get(this.appURL + '/dashboard/status/' + this.doors[0].name).subscribe(data => {
+    this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.doors[0].name).subscribe(data => {
       this.statusPercent1 = data.json()[this.doors[0].deviceComm];
     })
 
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getStatusPercentDoor2() {
-    this.http.get(this.appURL + '/dashboard/status/' + this.doors[1].name).subscribe(data => {
+    this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.doors[1].name).subscribe(data => {
       this.statusPercent2 = data.json()[this.doors[1].deviceComm];
     })
 
