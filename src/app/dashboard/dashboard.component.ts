@@ -21,9 +21,6 @@ export class DashboardComponent implements OnInit {
   appURL = 'http://192.168.216.233:8080';
 
   doors: any = [];
-
-  index : number;
-
   statusPercent1: number;
   statusPercent2: number;
 
@@ -71,8 +68,8 @@ export class DashboardComponent implements OnInit {
   }
 
   interval = setInterval(() => {
-    this.getStatusPercentDoor1()
-    this.getStatusPercentDoor2()
+    this.getStatusPercentDoor1();
+    this.getStatusPercentDoor2();
   }, 200);
 
 
@@ -85,7 +82,6 @@ export class DashboardComponent implements OnInit {
       return this.statusDoor1 = "Open";
     }
   }
-
   getStatus2() {
     if (this.statusPercent2 < 5) {
       return this.statusDoor2 = "Closed";
@@ -97,10 +93,10 @@ export class DashboardComponent implements OnInit {
   }
 
   showProgress1(){
-    document.getElementById("bar1").setAttribute("style", "width: 0; width: " + this.statusPercent1 + "%");
+    document.getElementsByClassName("list-group-progress")[0].setAttribute("style", "width: 0; width: " + this.statusPercent1 + "%");
   }
   showProgress2(){
-    document.getElementById("bar2").setAttribute("style", "width: 0; width: " + this.statusPercent2 + "%");
+    document.getElementsByClassName("list-group-progress")[0].setAttribute("style", "width: 0; width: " + this.statusPercent1 + "%");
   }
 
   disable1(){
@@ -121,22 +117,21 @@ export class DashboardComponent implements OnInit {
       //return this.statusDoor = "Open";
     }
   }
-
   disable2(){
     if (this.statusPercent2 < 5) {
-      document.getElementById("4").removeAttribute("disabled");
-      document.getElementById("5").setAttribute("disabled", "");
-      document.getElementById("6").setAttribute("disabled", "");
+      document.getElementById("1").removeAttribute("disabled");
+      document.getElementById("2").setAttribute("disabled", "");
+      document.getElementById("3").setAttribute("disabled", "");
       // return this.statusDoor = "Closed";
     } else if (this.statusPercent2 > 5 && this.statusPercent2 < 95) {
-      document.getElementById("4").removeAttribute("disabled");
-      document.getElementById("5").removeAttribute("disabled");
-      document.getElementById("6").removeAttribute("disabled");
+      document.getElementById("1").removeAttribute("disabled");
+      document.getElementById("2").removeAttribute("disabled");
+      document.getElementById("3").removeAttribute("disabled");
       //return this.statusDoor = "Moving";
     } else if (this.statusPercent2 > 95) {
-      document.getElementById("4").setAttribute("disabled", "");
-      document.getElementById("5").removeAttribute("disabled");
-      document.getElementById("6").setAttribute("disabled", "");
+      document.getElementById("1").setAttribute("disabled", "");
+      document.getElementById("2").removeAttribute("disabled");
+      document.getElementById("3").setAttribute("disabled", "");
       //return this.statusDoor = "Open";
     }
   }
@@ -146,7 +141,6 @@ export class DashboardComponent implements OnInit {
       .map(response => response.json())
       .subscribe(data => {
         this.doors = data;
-        console.log(data);
       });
   }
 

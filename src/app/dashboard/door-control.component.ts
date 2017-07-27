@@ -2,10 +2,6 @@ import { Component, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import {Door} from './dashboard.component';
 
-export class Status{
-  COMM : number;
-}
-
 @Component ({
   selector: 'app-door-control',
   templateUrl: './doorcontrol.html',
@@ -15,8 +11,6 @@ export class DoorControlComponent {
   appURL = 'http://192.168.216.233:8080';
 
   @Input() door: Door;
-
-  status : Status;
 
   statusPercent: number;
 
