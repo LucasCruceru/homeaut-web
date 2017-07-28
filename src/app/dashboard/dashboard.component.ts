@@ -9,9 +9,10 @@ export class Door {
 
   id: number;
   name: string;
-  deviceComm : string;
+  deviceComm: string;
 
 }
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -47,102 +48,104 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.http.get(GlobalVar.appURL + '/dashboard/stop/' + this.doors[index].name).subscribe()
   }
 
-  getStatusPercentDoor1() {
-    this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.doors[0].name).subscribe(data => {
-      this.statusPercent1 = data.json()[this.doors[0].deviceComm];
-    });
-
-    this.getStatus1();
-    this.showProgress1();
-    this.disable1();
+  getStatusPercentDoor(index: number) {
+    if (index == 0) {
+      this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.doors[index].name).subscribe(data => {
+        this.statusPercent1 = data.json()[this.doors[index].deviceComm];
+      });
+    }else if (index == 1) {
+      this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.doors[index].name).subscribe(data => {
+        this.statusPercent2 = data.json()[this.doors[index].deviceComm];
+      });
+    }
+    this.getStatus(index);
+    this.showProgress(index);
+    this.disable(index);
   }
 
-  getStatusPercentDoor2() {
-    this.http.get(GlobalVar.appURL + '/dashboard/status/' + this.doors[1].name).subscribe(data => {
-      this.statusPercent2 = data.json()[this.doors[1].deviceComm];
-    });
-
-    this.getStatus2();
-    this.showProgress2();
-    this.disable2();
-  }
-
-  interval = setInterval(() => {
-    this.getStatusPercentDoor1();
-    this.getStatusPercentDoor2();
-  }, 200);
+    interval = setInterval(() => {
+      this.getStatusPercentDoor(0);
+      this.getStatusPercentDoor(1);
+    }, 500);
 
 
-  getStatus1() {
-    if (this.statusPercent1 < 5) {
-      return this.statusDoor1 = "Closed";
-    } else if (this.statusPercent1> 5 && this.statusPercent1 < 95) {
-      return this.statusDoor1 = "Moving";
-    } else if (this.statusPercent1 > 95) {
-      return this.statusDoor1 = "Open";
+    getStatus(index:number){
+      if (index == 0) {
+        if (this.statusPercent1 < 5) {
+          return this.statusDoor1 = "Closed";
+        } else if (this.statusPercent1 > 5 && this.statusPercent1 < 95) {
+          return this.statusDoor1 = "Moving";
+        } else if (this.statusPercent1 > 95) {
+          return this.statusDoor1 = "Open";
+        }
+      } else if (index == 1) {
+        if (this.statusPercent2 < 5) {
+          return this.statusDoor2 = "Closed";
+        } else if (this.statusPercent2 > 5 && this.statusPercent2 < 95) {
+          return this.statusDoor2 = "Moving";
+        } else if (this.statusPercent2 > 95) {
+          return this.statusDoor2 = "Open";
+        }
+      }
+    }
+
+    showProgress(index: number){
+      if (index == 0) {
+        document.getElementById("bar1").setAttribute("style", "width: 0; width: " + this.statusPercent1 + "%");
+
+    }else if (index == 1) {
+      document.getElementById("bar2").setAttribute("style", "width: 0; width: " + this.statusPercent2 + "%");
     }
   }
-  getStatus2() {
-    if (this.statusPercent2 < 5) {
-      return this.statusDoor2 = "Closed";
-    } else if (this.statusPercent2 > 5 && this.statusPercent2 < 95) {
-      return this.statusDoor2 = "Moving";
-    } else if (this.statusPercent2 > 95) {
-      return this.statusDoor2 = "Open";
-    }
-  }
 
-  showProgress1(){
-    document.getElementById("bar1").setAttribute("style", "width: 0; width: " + this.statusPercent1 + "%");
-  }
-  showProgress2(){
-    document.getElementById("bar2").setAttribute("style", "width: 0; width: " + this.statusPercent2 + "%");
-  }
 
-  disable1(){
-    if (this.statusPercent1 < 5) {
-      document.getElementById("1").removeAttribute("disabled");
-      document.getElementById("2").setAttribute("disabled", "");
-      document.getElementById("3").setAttribute("disabled", "");
-      // return this.statusDoor = "Closed";
-    } else if (this.statusPercent1 > 5 && this.statusPercent1 < 95) {
-      document.getElementById("1").removeAttribute("disabled");
-      document.getElementById("2").removeAttribute("disabled");
-      document.getElementById("3").removeAttribute("disabled");
-      //return this.statusDoor = "Moving";
-    } else if (this.statusPercent1 > 95) {
-      document.getElementById("1").setAttribute("disabled", "");
-      document.getElementById("2").removeAttribute("disabled");
-      document.getElementById("3").setAttribute("disabled", "");
-      //return this.statusDoor = "Open";
-    }
-  }
-  disable2(){
-    if (this.statusPercent2 < 5) {
-      document.getElementById("4").removeAttribute("disabled");
-      document.getElementById("5").setAttribute("disabled", "");
-      document.getElementById("6").setAttribute("disabled", "");
-      // return this.statusDoor = "Closed";
-    } else if (this.statusPercent2 > 5 && this.statusPercent2 < 95) {
-      document.getElementById("4").removeAttribute("disabled");
-      document.getElementById("5").removeAttribute("disabled");
-      document.getElementById("6").removeAttribute("disabled");
-      //return this.statusDoor = "Moving";
-    } else if (this.statusPercent2 > 95) {
-      document.getElementById("4").setAttribute("disabled", "");
-      document.getElementById("5").removeAttribute("disabled");
-      document.getElementById("6").setAttribute("disabled", "");
-      //return this.statusDoor = "Open";
+  disable(index: number) {
+    if (index == 0) {
+      if (this.statusPercent1 < 5) {
+        document.getElementById("1").removeAttribute("disabled");
+        document.getElementById("2").setAttribute("disabled", "");
+        document.getElementById("3").setAttribute("disabled", "");
+        // return this.statusDoor = "Closed";
+      } else if (this.statusPercent1 > 5 && this.statusPercent1 < 95) {
+        document.getElementById("1").removeAttribute("disabled");
+        document.getElementById("2").removeAttribute("disabled");
+        document.getElementById("3").removeAttribute("disabled");
+        //return this.statusDoor = "Moving";
+      } else if (this.statusPercent1 > 95) {
+        document.getElementById("1").setAttribute("disabled", "");
+        document.getElementById("2").removeAttribute("disabled");
+        document.getElementById("3").setAttribute("disabled", "");
+        //return this.statusDoor = "Open";
+      }
+    }else if (index == 1) {
+      if (this.statusPercent2 < 5) {
+        document.getElementById("4").removeAttribute("disabled");
+        document.getElementById("5").setAttribute("disabled", "");
+        document.getElementById("6").setAttribute("disabled", "");
+        // return this.statusDoor = "Closed";
+      } else if (this.statusPercent2 > 5 && this.statusPercent2 < 95) {
+        document.getElementById("4").removeAttribute("disabled");
+        document.getElementById("5").removeAttribute("disabled");
+        document.getElementById("6").removeAttribute("disabled");
+        //return this.statusDoor = "Moving";
+      } else if (this.statusPercent2 > 95) {
+        document.getElementById("4").setAttribute("disabled", "");
+        document.getElementById("5").removeAttribute("disabled");
+        document.getElementById("6").setAttribute("disabled", "");
+        //return this.statusDoor = "Open";
+      }
     }
   }
 
   getDoorData() {
     this.dashboardService.getAll()
-      .then(doors => {this.doors = doors; });
+      .then(doors => {
+        this.doors = doors;
+      });
   }
 
   ngOnDestroy(): void {
-    if(this.interval)
+    if (this.interval)
       clearInterval(this.interval);
   }
 
