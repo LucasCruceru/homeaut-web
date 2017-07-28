@@ -1,54 +1,10 @@
-.section-headerL {
-  position: relative;
-  padding: 20px;
-  margin: 20px -15px;
-  font-size: 14px;
-  border: 1px solid #434857;
-  border-radius: 6px 6px 0px 0px;
-
-  background-color: transparent;
-}
-
-.highlightL {
-  border: 0;
-  background-color: #1a1c22;
-  padding: 40px;
-  margin-right: 0;
-  margin-left: 0;
-  margin-bottom: 20px;
-}
-
-.door-namesL {
-  text-align: center;
-}
-
-.cancel-bordersL {
-  padding-right: 30px !important;
-  padding-left: 30px !important;
-
-}
-
-button.L {
-  padding: 1px 3px;
-  background: transparent;
-  border: none !important;
-  font-size: 0;
-  outline: none;
-  display: block;
-  height: inherit;
-  width: inherit;
-  cursor: pointer;
-}
-
-
-
 .section-header {
   position: relative;
   padding: 20px;
   margin: 20px -15px;
   font-size: 14px;
   border: 1px solid #434857;
-  border-radius: 6px 6px 0px 0px;
+  border-radius: 6px 6px 0 0;
 
   background-color: transparent;
 }
@@ -85,7 +41,7 @@ button {
 }
 
 button:disabled,
-button[disabled]{
+button[disabled] .action-buttons{
   padding: 1px 3px;
   background: transparent;
   border: none !important;
@@ -97,10 +53,32 @@ button[disabled]{
   cursor: not-allowed;
 }
 
-button:disabled .statcard.statcard-danger {
+button:disabled .statcard .statcard-danger {
   background: rgba(222, 68, 86,.5);
 }
 
-button:disabled .statcard.statcard-success {
+button:disabled .statcard .statcard-success {
   background: rgba(27,201,142,.5);
 }
+
+.sign-out-btn{
+  display: inline-block;
+  font-weight: normal;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 0.25rem;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+
+
